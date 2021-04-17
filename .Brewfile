@@ -80,6 +80,7 @@ brew 'vim'
 brew 'zlib'
 brew 'zsh'
 brew 'getantibody/tap/antibody'
+brew 'peco'
 
 # Dev/Cloud
 brew 'awscli'
