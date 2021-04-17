@@ -3,6 +3,7 @@
 
 zdharma/fast-syntax-highlighting
 zsh-users/zsh-autosuggestions
+zsh-users/zsh-completions
 jimeh/zsh-peco-history
 
 robbyrussell/oh-my-zsh path:plugins/autopep8
