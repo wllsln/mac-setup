@@ -8,7 +8,6 @@
 
 # Necessary
 brew 'git'
-brew '
 brew 'mas'
 
 # Command-Line Mac App Store
