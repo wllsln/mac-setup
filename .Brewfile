@@ -29,7 +29,6 @@ cask 'google-chrome'
 cask 'idrive'
 cask 'microsoft-office'
 cask 'obs'
-cask 'onedrive'
 cask 'rectangle'
 cask 'slack'
 cask 'spotify'
@@ -78,7 +77,7 @@ brew 'whois'
 brew 'vim'
 brew 'zlib'
 brew 'zsh'
-brew 'getantibody/tap/antibody'
+brew 'antibody'
 brew 'peco'
 
 # Dev/Cloud
@@ -104,7 +103,7 @@ cask 'docker'
 # b) pyenv way:
 # pyenv install <python version>
 # pyenv virtualenv <python version> <name>
-brew 'python@2' # 2.7
+# brew 'python@2' # 2.7. <-- no longer supported
 brew 'python' # 3
 brew 'pyenv'
 brew 'pyenv-virtualenv'
@@ -117,5 +116,5 @@ brew 'pyenv-virtualenv'
 # gem install bundler
 brew 'rbenv'
 
-# Java 8 (JRE)
-cask 'homebrew/cask-versions/java8'
+# Java 8 (JRE) <-- skip for now until needed
+# cask 'homebrew/cask-versions/java8'
