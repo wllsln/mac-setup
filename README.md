@@ -10,7 +10,7 @@
 ### Install `homebrew`
 
 ```bash
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 ### Install `yadm`
@@ -24,7 +24,7 @@ brew install yadm
 ### Clone and bootstrap
 
 ```bash
-yadm clone https://github.com/pndurette/mac-setup.git --bootstrap # https!
+yadm clone https://github.com/wllsln/mac-setup.git --bootstrap # https!
 ```
 
 **NB:** Bootstraping updates the remote url to ssh, so an ssh key will have to be configured after this (see below).
