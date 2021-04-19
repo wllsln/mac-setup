@@ -59,7 +59,6 @@ brew 'nmap'
 brew 'gpg'
 brew 'htop'
 brew 'less'
-brew 'sed'
 brew 'telnet'
 brew 'youtube-dl'
 
