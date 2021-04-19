@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 SYSTEM_TYPE=$(uname -s)
-SSH_REPO_URL="git@github.com:pndurette/mac-setup.git"
+SSH_REPO_URL="git@github.com:wllsln/mac-setup.git"
 
 #-----------------------------------------
 # * Install Homebrew
