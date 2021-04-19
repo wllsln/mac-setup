@@ -131,8 +131,12 @@ antibody bundle < ~/.zsh_plugins.txt
 # (After plugins to load their completion functions in the $fpath)
 # http://zsh.sourceforge.net/Doc/Release/Functions.html
 # http://zsh.sourceforge.net/Doc/Release/Completion-System.html
-autoload -U compinit
-compinit
+## Original
+# autoload -U compinit
+# compinit
+## From https://stackoverflow.com/questions/58283701/why-cant-zsh-execute-command-compdef
+autoload -U +X compinit && compinit
+source <(kubectl completion zsh)
 
 #-----------------------------------------
 # ** Zsh plugins (that require compinit)
