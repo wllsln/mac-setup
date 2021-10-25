@@ -21,14 +21,14 @@ mas "Xcode", id: 497799835
 
 # Cask macOS apps
 cask 'adobe-creative-cloud'
-cask 'avira-antivirus'
+# cask 'avira-antivirus'
 cask 'discord'
 cask 'dropbox'
 cask 'firefox'
 cask 'google-chrome'
-cask 'idrive'
-cask 'microsoft-office'
-cask 'obs'
+# cask 'idrive'
+# cask 'microsoft-office'
+# cask 'obs'
 cask 'rectangle'
 cask 'slack'
 cask 'spotify'
@@ -40,6 +40,7 @@ cask 'postman'
 cask 'iterm2'
 cask 'sublime-text'
 cask 'typora'
+cask 'visual-studio-code'
 
 # Make macOS more linux-y
 brew 'findutils'
@@ -60,6 +61,7 @@ brew 'gpg'
 brew 'htop'
 brew 'less'
 brew 'telnet'
+brew 'wireshark'
 brew 'youtube-dl'
 
 # Dev
@@ -84,9 +86,6 @@ brew 'awscli'
 cask 'google-cloud-sdk'
 brew 'azure-cli'
 brew 'terraform'
-
-# Dev/Apps
-cask 'visual-studio-code'
 
 # Dev/Containers
 brew 'kubernetes-cli' # i.e. kubectl
