@@ -166,21 +166,26 @@ fi
 #-----------------------------------------
 # ** PowerLevel9k theme config
 #-----------------------------------------
+# Will need to install fonts to get logos:   brew install --cask font-hack-nerd-font
+# Check installed using command:  get_icon_names
 
 # Prompts
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-    context
+    # context
     dir
-    dir_writable
+    # dir_writable
     vcs
 )
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     status
-    root_indicator
-    background_jobs
+    # root_indicator
+    # background_jobs
     aws
     command_execution_time
-    time
+    # time
     # pyenv # too slow! see: pyup()/pydown() (below)
 )
 
