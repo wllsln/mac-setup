@@ -27,6 +27,7 @@ cask 'dropbox'
 cask 'firefox'
 cask 'google-chrome'
 # cask 'idrive'
+cask 'lastpass'
 # cask 'microsoft-office'
 # cask 'obs'
 cask 'rectangle'
@@ -41,6 +42,10 @@ cask 'iterm2'
 cask 'sublime-text'
 cask 'typora'
 cask 'visual-studio-code'
+
+# Fonts
+tap 'homebrew/cask-fonts'
+cask 'font-hack-nerd-font'
 
 # Make macOS more linux-y
 brew 'findutils'
