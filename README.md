@@ -21,6 +21,13 @@ brew install yadm
 
 ## Setup
 
+### Note about mas
+
+For App Store items, this will fail if trying to use an Apple ID that has not downloaded/installed the software previously. Instead, you will need to manually purchase each package first.
+```bash
+mas purchase 497799835  # Xcode
+```
+
 ### Clone and bootstrap
 
 ```bash
