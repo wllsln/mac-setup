@@ -25,6 +25,8 @@ PATHS=(
     # PATH for pipsi
     # https://github.com/mitsuhiko/pipsi
     $HOME/.local/bin
+    ${GOPATH}/bin
+    ${GOROOT}/bin
 )
 # NB: 'j' flag: join PATHS by ':'' (see: man zshexpn)
 export PATH=${(j[:])PATHS}:$PATH 
@@ -33,8 +35,11 @@ export PATH=${(j[:])PATHS}:$PATH
 # https://github.com/Homebrew/homebrew-core/issues/14737#issuecomment-309848851
 export GPG_TTY=$(tty)
 
-# Go
-export GOPATH="${HOME}/.go"
+# Golang
+export GOBIN=/usr/local/Cellar/go
+export GOROOT="$(brew --prefix golang)/libexec"
+export GOPATH=$HOME/go
+# manual:  mkdir -p $HOME/go/{bin,src,pkg}
 
 # Pyenv
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
