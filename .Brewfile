@@ -73,21 +73,23 @@ brew 'youtube-dl'
 brew 'wget'
 
 # Dev
+brew 'antibody'
+brew 'automake'
 brew 'bash'
 brew 'git'
+brew 'go'
 brew 'jq'
 brew 'make'
-brew 'automake'
 brew 'nano'
 brew 'openssl'
+brew 'peco'
 brew 'rpm'
 brew 'tcpdump'
 brew 'whois'
 brew 'vim'
 brew 'zlib'
 brew 'zsh'
-brew 'antibody'
-brew 'peco'
+
 
 # Dev/Cloud
 brew 'awscli'
