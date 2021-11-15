@@ -46,8 +46,26 @@ cask 'typora'
 cask 'visual-studio-code'
 
 # Fonts
+brew 'svn'  # dependency for font install
 tap 'homebrew/cask-fonts'
 cask 'font-hack-nerd-font'
+brew 'font-anton'
+brew 'font-cormorant'
+brew 'font-epilogue
+brew 'font-ibm-plex-mono'
+brew 'font-lora'
+brew 'font-manrope'
+brew 'font-montserrat'
+brew 'font-nunito-sans'
+brew 'font-oswald'
+brew 'font-oxygen'
+brew 'font-playfair-display'
+brew 'font-proza-libre'
+brew 'font-raleway'
+brew 'font-roboto-mono'
+brew 'font-roboto-slab'
+brew 'font-rubik'
+brew 'font-sora'
 
 # Make macOS more linux-y
 brew 'binutils'
