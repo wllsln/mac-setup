@@ -11,23 +11,24 @@ brew 'git'
 brew 'mas'
 
 # Command-Line Mac App Store
+# Disable because Monterey has problems with mas
 # NB: 'brew install mas && mas signin <email>'
-mas 'Amphetamine', id: 937984704
-mas 'Display Menu', id: 549083868
-mas 'Pages', id: 409201541
-mas 'Numbers', id: 409203825
-mas 'Keynote', id: 409183694
-mas "Xcode", id: 497799835
+# mas 'Amphetamine', id: 937984704
+# mas 'Display Menu', id: 549083868
+# mas 'Pages', id: 409201541
+# mas 'Numbers', id: 409203825
+# mas 'Keynote', id: 409183694
+# mas "Xcode", id: 497799835
 
 # Cask macOS apps
-cask 'adobe-creative-cloud'
+# cask 'adobe-creative-cloud'
 # cask 'avira-antivirus'
+cask 'bitwarden'
 cask 'discord'
 cask 'dropbox'
 cask 'firefox'
 cask 'google-chrome'
 # cask 'idrive'
-cask 'lastpass'
 # cask 'microsoft-office'
 # cask 'obs'
 cask 'rectangle'
