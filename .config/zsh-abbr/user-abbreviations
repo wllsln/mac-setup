@@ -1,0 +1,6 @@
+abbr "dcd"="docker-compose down --volumes --remove-orphans"
+abbr "dcu metrics"="docker-compose --file docker-compose.yml --file docker-compose.dev.yml up --docker-compose.metrics.yml"
+abbr "dcu rdb"="docker-compose --file docker-compose.yml --file docker-compose.dev.yml up"
+abbr "dex"="docker exec -it compose-tms-1 /bin/bash"
+abbr "dps"="docker ps"
+abbr "ll"="ls -lrta"

@@ -77,3 +77,7 @@ yadm list -a
 ```
 
 See: https://yadm.io/docs/common_commands
+
+### Future inspiration
+- https://engineeringfordatascience.com/posts/configure_terminal_for_data_science_with_oh_my_zsh/
+- https://safjan.com/top-popular-zsh-plugins-on-github-2023/

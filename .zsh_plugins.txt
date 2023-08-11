@@ -1,21 +1,23 @@
-# zsh plugins for Antibody
-# https://getantibody.github.io/usage/
+# zsh plugins to load via Antidote
+# more plugins here: https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
 
-zdharma/fast-syntax-highlighting
+# Theme: PowerLevel10k
+romkatv/powerlevel10k
+
+# Autocompletion
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-completions
+# zsh-users/zsh-history-substring-search <-- Didn't like it
+olets/zsh-abbr
+
+# Dev 
+zdharma-continuum/fast-syntax-highlighting
 jimeh/zsh-peco-history
+ohmyzsh/ohmyzsh path:plugins/aws
+ohmyzsh/ohmyzsh path:plugins/azure
+ohmyzsh/ohmyzsh path:plugins/kubectl
+ohmyzsh/ohmyzsh path:plugins/pip
 
-robbyrussell/oh-my-zsh path:plugins/autopep8
-robbyrussell/oh-my-zsh path:plugins/docker
-robbyrussell/oh-my-zsh path:plugins/pip
-
-# NB: pyenv plugins (like the one part of omz)
-# also init pyenv-virtualenv if installed,
-# which slows down the shell considerably.
-# https://github.com/pyenv/pyenv-virtualenv/issues/42
-# robbyrussell/oh-my-zsh path:plugins/pyenv # Too slow!
-
-# Must be at the end:
-# https://github.com/zsh-users/zsh-history-substring-search#usage
-# zsh-users/zsh-history-substring-search # I don't like it!
+# Currently Broken
+# ohmyzsh/ohmyzsh path:plugins/autopep8
+# ohmyzsh/ohmyzsh path:plugins/docker
