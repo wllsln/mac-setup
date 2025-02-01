@@ -26,6 +26,7 @@ brew 'mas'
 cask 'arc'
 # cask 'blackhole-2ch'
 cask 'bitwarden'
+cask 'cryptomator'
 # cask 'discord'
 cask 'dropbox'
 cask 'firefox'
@@ -44,18 +45,17 @@ cask 'via'
 cask 'vlc'
 cask 'zoom'
 
-# Tap dev stuff
+## Tap dev stuff
 tap 'azure/kubelogin'
 tap 'derailed/k9s'
 tap 'microsoft/mssql-release'
-tap 'homebrew/cask-fonts'
 
-# Cask dev apps
+## Cask dev apps
 cask '1password'
 cask 'azure-data-studio'
 cask 'db-browser-for-sqlite'
 cask 'iterm2'
-cask 'meld'
+# cask 'meld'  # brew disabled as it's not maintained
 cask 'postman'
 cask 'sourcetree'
 cask 'sublime-text'
@@ -63,28 +63,28 @@ cask 'typora'
 cask 'visual-studio-code'
 cask 'vmware-fusion'
 
-# Fonts
+## Fonts
 brew 'svn'  # dependency for font install
 cask 'font-hack-nerd-font'
-brew 'font-anton'
-brew 'font-cormorant'
-brew 'font-epilogue'
-brew 'font-ibm-plex-mono'
-brew 'font-lora'
-brew 'font-manrope'
-brew 'font-montserrat'
-brew 'font-nunito-sans'
-brew 'font-oswald'
-brew 'font-oxygen'
-brew 'font-playfair-display'
-brew 'font-proza-libre'
-brew 'font-raleway'
-brew 'font-roboto-mono'
-brew 'font-roboto-slab'
-brew 'font-rubik'
-brew 'font-sora'
+cask 'font-anton'
+cask 'font-cormorant'
+cask 'font-epilogue'
+cask 'font-ibm-plex-mono'
+cask 'font-lora'
+cask 'font-manrope'
+cask 'font-montserrat'
+cask 'font-nunito-sans'
+cask 'font-oswald'
+cask 'font-oxygen'
+cask 'font-playfair-display'
+cask 'font-proza-libre'
+cask 'font-raleway'
+cask 'font-roboto-mono'
+cask 'font-roboto-slab'
+cask 'font-rubik'
+cask 'font-sora'
 
-# Make macOS more linux-y
+## Make macOS more linux-y
 brew 'binutils'
 brew 'coreutils'
 brew 'diffutils'
@@ -105,15 +105,15 @@ brew 'telnet'
 brew 'tmux'
 brew 'watch'
 brew 'wireshark'
-brew 'youtube-dl'
+brew 'yt-dlp'
 brew 'wget'
 
-# Dev
+## Dev
 brew 'antidote'
 brew 'automake'
 brew 'bash'
 brew 'bat'
-brew 'exa'
+brew 'eza'
 brew 'fzf'
 brew 'git'
 brew 'go'
@@ -130,18 +130,18 @@ brew 'vim'
 brew 'zlib'
 brew 'zsh'
 
-# Dev/Cloud
+## Dev/Cloud
 brew 'awscli'
 brew 'azure-cli'
 brew 'terraform'
 cask 'google-cloud-sdk'
 
-# Dev/Containers
+## Dev/Containers
 brew 'kubernetes-cli' # i.e. kubectl
 brew 'kubernetes-helm'
 cask 'docker'
 
-# Dev/Python
+## Dev/Python
 # a) virtualenv way:
 # PIP_REQUIRE_VIRTUALENV="false" pip install virtualenv
 # PIP_REQUIRE_VIRTUALENV="false" pip3 install virtualenv
@@ -155,7 +155,7 @@ brew 'python' # 3
 brew 'pyenv'
 brew 'pyenv-virtualenv'
 
-# Dev/Ruby
+## Dev/Ruby
 # https://github.com/rbenv/rbenv#command-reference
 # rbenv init
 # rbenv install <version>
@@ -163,5 +163,5 @@ brew 'pyenv-virtualenv'
 # gem install bundler
 # brew 'rbenv'
 
-# Java 8 (JRE) <-- skip for now until needed
+## Java 8 (JRE) <-- skip for now until needed
 # cask 'homebrew/cask-versions/java8'
