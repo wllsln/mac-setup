@@ -29,8 +29,11 @@ PATHS=(
     # PATH for pipsi
     # https://github.com/mitsuhiko/pipsi
     $HOME/.local/bin
+    ${GOPATH}/bin
+    ${GOROOT}/bin
     $HOME/.jenv/bin
 )
+
 # NB: 'j' flag: join PATHS by ':'' (see: man zshexpn)
 export PATH=${(j[:])PATHS}:$PATH 
 
@@ -133,23 +136,6 @@ antidote load
 # # https://github.com/zsh-users/zsh-history-substring-search#usage
 # bindkey '^[[A' history-substring-search-up      # Arrow up
 # bindkey '^[[B' history-substring-search-down    # Arrow down
-
-#-----------------------------------------
-# ** Aliases and abbreviations
-#-----------------------------------------
-
-### Disable autocorrect, shouldn't be needed now that we set CORRECT instead of CORRECT_ALL
-##alias mv='nocorrect mv'
-##alias cp='nocorrect cp'
-##alias rm='nocorrect rm'
-##alias mkdir='nocorrect mkdir'
-# Color commands
-alias ls='ls --color=auto'
-alias ll='ls --color=auto -lah'
-alias grep='grep --colour=auto'
-# Human readable
-alias df='df -h'
-alias du='du -h'
 
 #-----------------------------------------
 # pyenv virtualenvs

@@ -23,18 +23,28 @@ brew 'mas'
 ## Cask macOS apps
 # cask 'adobe-creative-cloud'
 # cask 'avira-antivirus'
+<<<<<<< HEAD
 cask 'arc'
+=======
+cask 'blackhole-2ch'
+>>>>>>> e1a4142820cde27af09a33ba693187ef8a9aa035
 cask 'bitwarden'
 # cask 'discord'
 cask 'dropbox'
 cask 'firefox'
 cask 'google-chrome'
 # cask 'idrive'
+<<<<<<< HEAD
 # cask 'inkscape'
 cask 'microsoft-edge'
 cask 'microsoft-office'
 # cask 'obs'
+=======
+# cask 'microsoft-office'
+cask 'obs'
+>>>>>>> e1a4142820cde27af09a33ba693187ef8a9aa035
 cask 'rectangle'
+cask 'remote-desktop-manager-free'
 cask 'slack'
 cask 'spotify'
 cask 'synologyassistant'
@@ -49,6 +59,7 @@ tap 'derailed/k9s'
 tap 'microsoft/mssql-release'
 
 # Cask dev apps
+<<<<<<< HEAD
 cask '1password'
 cask 'azure-data-studio'
 cask 'db-browser-for-sqlite'
@@ -56,14 +67,38 @@ cask 'iterm2'
 cask 'meld'
 cask 'postman'
 cask 'remote-desktop-manager-free'
+=======
+cask 'iterm2'
+cask 'meld'
+cask 'postman'
+cask 'sourcetree'
+>>>>>>> e1a4142820cde27af09a33ba693187ef8a9aa035
 cask 'sublime-text'
 cask 'typora'
 cask 'visual-studio-code'
 cask 'vmware-fusion'
 
 # Fonts
+brew 'svn'  # dependency for font install
 tap 'homebrew/cask-fonts'
 cask 'font-hack-nerd-font'
+brew 'font-anton'
+brew 'font-cormorant'
+brew 'font-epilogue
+brew 'font-ibm-plex-mono'
+brew 'font-lora'
+brew 'font-manrope'
+brew 'font-montserrat'
+brew 'font-nunito-sans'
+brew 'font-oswald'
+brew 'font-oxygen'
+brew 'font-playfair-display'
+brew 'font-proza-libre'
+brew 'font-raleway'
+brew 'font-roboto-mono'
+brew 'font-roboto-slab'
+brew 'font-rubik'
+brew 'font-sora'
 
 # Make macOS more linux-y
 brew 'binutils'
@@ -91,14 +126,15 @@ brew 'wget'
 
 # Dev
 brew 'antidote'
+brew 'automake'
 brew 'bash'
 brew 'bat'
 brew 'exa'
 brew 'fzf'
 brew 'git'
+brew 'go'
 brew 'jq'
 brew 'make'
-brew 'automake'
 brew 'nano'
 brew 'nvm'
 brew 'openssl'
