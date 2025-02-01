@@ -23,28 +23,19 @@ brew 'mas'
 ## Cask macOS apps
 # cask 'adobe-creative-cloud'
 # cask 'avira-antivirus'
-<<<<<<< HEAD
 cask 'arc'
-=======
-cask 'blackhole-2ch'
->>>>>>> e1a4142820cde27af09a33ba693187ef8a9aa035
+# cask 'blackhole-2ch'
 cask 'bitwarden'
 # cask 'discord'
 cask 'dropbox'
 cask 'firefox'
 cask 'google-chrome'
 # cask 'idrive'
-<<<<<<< HEAD
 # cask 'inkscape'
 cask 'microsoft-edge'
 cask 'microsoft-office'
 # cask 'obs'
-=======
-# cask 'microsoft-office'
-cask 'obs'
->>>>>>> e1a4142820cde27af09a33ba693187ef8a9aa035
 cask 'rectangle'
-cask 'remote-desktop-manager-free'
 cask 'slack'
 cask 'spotify'
 cask 'synologyassistant'
@@ -57,22 +48,16 @@ cask 'zoom'
 tap 'azure/kubelogin'
 tap 'derailed/k9s'
 tap 'microsoft/mssql-release'
+tap 'homebrew/cask-fonts'
 
 # Cask dev apps
-<<<<<<< HEAD
 cask '1password'
 cask 'azure-data-studio'
 cask 'db-browser-for-sqlite'
 cask 'iterm2'
 cask 'meld'
 cask 'postman'
-cask 'remote-desktop-manager-free'
-=======
-cask 'iterm2'
-cask 'meld'
-cask 'postman'
 cask 'sourcetree'
->>>>>>> e1a4142820cde27af09a33ba693187ef8a9aa035
 cask 'sublime-text'
 cask 'typora'
 cask 'visual-studio-code'
@@ -80,11 +65,10 @@ cask 'vmware-fusion'
 
 # Fonts
 brew 'svn'  # dependency for font install
-tap 'homebrew/cask-fonts'
 cask 'font-hack-nerd-font'
 brew 'font-anton'
 brew 'font-cormorant'
-brew 'font-epilogue
+brew 'font-epilogue'
 brew 'font-ibm-plex-mono'
 brew 'font-lora'
 brew 'font-manrope'
