@@ -1,16 +1,16 @@
-# Based on:
-# https://www.taniarascia.com/setting-up-a-brand-new-mac-for-development/
-# https://danielmiessler.com/blog/first-10-things-new-mac/
-# https://hackercodex.com/guide/python-development-environment-on-mac-osx/
-# See homebrew-bundle:
-# https://github.com/Homebrew/homebrew-bundle
-# forked from gihub: pndurette/mac-setup
+## Based on:
+## https://www.taniarascia.com/setting-up-a-brand-new-mac-for-development/
+## https://danielmiessler.com/blog/first-10-things-new-mac/
+## https://hackercodex.com/guide/python-development-environment-on-mac-osx/
+## See homebrew-bundle:
+## https://github.com/Homebrew/homebrew-bundle
+## forked from gihub: pndurette/mac-setup
 
-# Necessary
+## Necessary
 brew 'git'
 brew 'mas'
 
-# Command-Line Mac App Store
+## Command-Line Mac App Store
 # Disable because Monterey has problems with mas
 # NB: 'brew install mas && mas signin <email>'
 # mas 'Amphetamine', id: 937984704
@@ -20,31 +20,46 @@ brew 'mas'
 # mas 'Keynote', id: 409183694
 # mas "Xcode", id: 497799835
 
-# Cask macOS apps
+## Cask macOS apps
 # cask 'adobe-creative-cloud'
 # cask 'avira-antivirus'
+cask 'arc'
 cask 'bitwarden'
-cask 'discord'
+# cask 'discord'
 cask 'dropbox'
 cask 'firefox'
 cask 'google-chrome'
 # cask 'idrive'
-# cask 'microsoft-office'
+# cask 'inkscape'
+cask 'microsoft-edge'
+cask 'microsoft-office'
 # cask 'obs'
 cask 'rectangle'
 cask 'slack'
 cask 'spotify'
-cask 'vlc'
+cask 'synologyassistant'
 cask 'the-unarchiver'
 cask 'via'
+cask 'vlc'
 cask 'zoom'
 
+# Tap dev stuff
+tap 'azure/kubelogin'
+tap 'derailed/k9s'
+tap 'microsoft/mssql-release'
+
 # Cask dev apps
-cask 'postman'
+cask '1password'
+cask 'azure-data-studio'
+cask 'db-browser-for-sqlite'
 cask 'iterm2'
+cask 'meld'
+cask 'postman'
+cask 'remote-desktop-manager-free'
 cask 'sublime-text'
 cask 'typora'
 cask 'visual-studio-code'
+cask 'vmware-fusion'
 
 # Fonts
 tap 'homebrew/cask-fonts'
@@ -55,6 +70,7 @@ brew 'binutils'
 brew 'coreutils'
 brew 'diffutils'
 brew 'findutils'
+brew 'ffmpeg'
 brew 'gpg'
 brew 'gnu-sed'
 brew 'gnu-tar'
@@ -96,9 +112,9 @@ brew 'zsh'
 
 # Dev/Cloud
 brew 'awscli'
-cask 'google-cloud-sdk'
 brew 'azure-cli'
 brew 'terraform'
+cask 'google-cloud-sdk'
 
 # Dev/Containers
 brew 'kubernetes-cli' # i.e. kubectl
@@ -125,7 +141,7 @@ brew 'pyenv-virtualenv'
 # rbenv install <version>
 # echo '<version>' > .ruby-version
 # gem install bundler
-brew 'rbenv'
+# brew 'rbenv'
 
 # Java 8 (JRE) <-- skip for now until needed
 # cask 'homebrew/cask-versions/java8'
