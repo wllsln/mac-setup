@@ -35,6 +35,7 @@ cask 'google-chrome'
 # cask 'inkscape'
 cask 'microsoft-edge'
 cask 'microsoft-office'
+cask 'notion'
 # cask 'obs'
 cask 'rectangle'
 cask 'slack'
@@ -133,7 +134,7 @@ brew 'zsh'
 ## Dev/Cloud
 brew 'awscli'
 brew 'azure-cli'
-brew 'terraform'
+# brew 'terraform'  # brew disabled as it's not maintained
 cask 'google-cloud-sdk'
 
 ## Dev/Containers
@@ -165,3 +166,8 @@ brew 'pyenv-virtualenv'
 
 ## Java 8 (JRE) <-- skip for now until needed
 # cask 'homebrew/cask-versions/java8'
+
+# For use with Cryptomator
+brew tap macos-fuse-t/homebrew-cask
+brew install fuse-t
+brew install fuse-t-sshfs
