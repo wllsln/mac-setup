@@ -9,11 +9,6 @@ export PATH="$HOME/.local/bin:$PATH"
 # brew install rbenv
 eval "$(rbenv init -)"
 
-# PATH etc. for pyenv
-# brew install pyenv pyenv-virtualenv
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
 # Paths for GO
 export GOPATH="${HOME}/.go"
 

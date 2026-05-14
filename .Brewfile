@@ -6,23 +6,14 @@
 ## https://github.com/Homebrew/homebrew-bundle
 ## forked from gihub: pndurette/mac-setup
 
-## Necessary
-brew 'git'
-brew 'mas'
-
 ## Command-Line Mac App Store
-# Disable because Monterey has problems with mas
-# NB: 'brew install mas && mas signin <email>'
-# mas 'Amphetamine', id: 937984704
-# mas 'Display Menu', id: 549083868
-# mas 'Pages', id: 409201541
-# mas 'Numbers', id: 409203825
-# mas 'Keynote', id: 409183694
-# mas "Xcode", id: 497799835
+brew 'mas'
+# NB: Sign into the App Store GUI first, then 'brew install mas'
+# mas signin is broken on macOS 10.13+ — manual sign-in required
+# mas 'Microsoft Defender', id: 1526737990
 
 ## Cask macOS apps
 # cask 'adobe-creative-cloud'
-# cask 'avira-antivirus'
 cask 'arc'
 # cask 'blackhole-2ch'
 cask 'bitwarden'
@@ -30,12 +21,16 @@ cask 'cryptomator'
 # cask 'discord'
 cask 'dropbox'
 cask 'firefox'
+cask 'fluidvoice'
 cask 'google-chrome'
-# cask 'idrive'
 # cask 'inkscape'
 cask 'microsoft-edge'
-cask 'microsoft-office'
+cask 'microsoft-excel'
+cask 'microsoft-outlook'
+cask 'microsoft-powerpoint'
+cask 'microsoft-word'
 cask 'notion'
+cask 'onedrive'
 # cask 'obs'
 cask 'rectangle'
 cask 'slack'
@@ -48,24 +43,25 @@ cask 'zoom'
 
 ## Tap dev stuff
 tap 'azure/kubelogin'
-tap 'derailed/k9s'
 tap 'microsoft/mssql-release'
 
 ## Cask dev apps
 cask '1password'
 cask 'azure-data-studio'
 cask 'db-browser-for-sqlite'
+cask 'claude'
+cask 'claude-code'
 cask 'iterm2'
-# cask 'meld'  # brew disabled as it's not maintained
+cask 'microsoft-teams'
 cask 'postman'
+cask 'remote-desktop-manager'
 cask 'sourcetree'
 cask 'sublime-text'
 cask 'typora'
-cask 'visual-studio-code'
+cask 'utm'
 cask 'vmware-fusion'
 
 ## Fonts
-brew 'svn'  # dependency for font install
 cask 'font-hack-nerd-font'
 cask 'font-anton'
 cask 'font-cormorant'
@@ -106,8 +102,8 @@ brew 'telnet'
 brew 'tmux'
 brew 'watch'
 brew 'wireshark'
-brew 'yt-dlp'
 brew 'wget'
+brew 'yt-dlp'
 
 ## Dev
 brew 'antidote'
@@ -117,11 +113,12 @@ brew 'bat'
 brew 'eza'
 brew 'fzf'
 brew 'git'
+brew 'git-lfs'
 brew 'go'
 brew 'jq'
 brew 'make'
+brew 'mise'
 brew 'nano'
-brew 'nvm'
 brew 'openssl'
 brew 'peco'
 brew 'rpm'
@@ -134,40 +131,18 @@ brew 'zsh'
 ## Dev/Cloud
 brew 'awscli'
 brew 'azure-cli'
-# brew 'terraform'  # brew disabled as it's not maintained
 cask 'google-cloud-sdk'
+brew 'k9s'
 
 ## Dev/Containers
 brew 'kubernetes-cli' # i.e. kubectl
-brew 'kubernetes-helm'
+brew 'helm'
 cask 'docker'
-
-## Dev/Python
-# a) virtualenv way:
-# PIP_REQUIRE_VIRTUALENV="false" pip install virtualenv
-# PIP_REQUIRE_VIRTUALENV="false" pip3 install virtualenv
-# virtualenv -p python <name> # or:
-# virtualenv -p python3 <name>
-# b) pyenv way:
-# pyenv install <python version>
-# pyenv virtualenv <python version> <name>
-# brew 'python@2' # 2.7. <-- no longer supported
-brew 'python' # 3
-brew 'pyenv'
-brew 'pyenv-virtualenv'
-
-## Dev/Ruby
-# https://github.com/rbenv/rbenv#command-reference
-# rbenv init
-# rbenv install <version>
-# echo '<version>' > .ruby-version
-# gem install bundler
-# brew 'rbenv'
 
 ## Java 8 (JRE) <-- skip for now until needed
 # cask 'homebrew/cask-versions/java8'
 
-# For use with Cryptomator
-brew tap macos-fuse-t/homebrew-cask
-brew install fuse-t
-brew install fuse-t-sshfs
+## FUSE-T (for Cryptomator)
+tap 'macos-fuse-t/homebrew-cask'
+cask 'fuse-t'
+cask 'fuse-t-sshfs'
