@@ -1,83 +1,110 @@
 # macOS setup
 
->  My macOS setup from scratch using [yadm](https://yadm.io).
-> `GNU` utils, dev setup, app, configs & Mac App Store installs.
+> My macOS setup from scratch using [yadm](https://yadm.io).
+> GNU utils, dev tools, apps, and configs — fully bootstrapped.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+## What's included
+
+| Tool | Purpose |
+|---|---|
+| [Homebrew](https://brew.sh) | Package manager — see `.Brewfile` for full app list |
+| [antidote](https://getantidote.github.io) | Zsh plugin manager (see `.zsh_plugins.txt`) |
+| [mise](https://mise.jdx.dev) | Runtime version manager (node, kubectl, etc.) |
+| [fzf](https://github.com/junegunn/fzf) | Fuzzy finder with full shell integration |
+| [zsh-abbr](https://github.com/olets/zsh-abbr) | Zsh abbreviations (see `.config/zsh-abbr/user-abbreviations`) |
+| [Powerlevel10k](https://github.com/romkatv/powerlevel10k) | Zsh prompt theme |
+| [tmux](https://github.com/tmux/tmux) | Terminal multiplexer with session persistence |
+| [vim](https://www.vim.org) | Text editor with vim-plug plugin manager |
+| [iTerm2](https://iterm2.com) | Terminal — prefs synced via `.iterm2/` |
 
 ## Pre-setup
 
-### Install `homebrew`
+### Install Homebrew
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-### Install `yadm`
+### Install yadm
 
 ```bash
 brew install yadm
 ```
 
-## Setup
+### Configure SSH
 
-### Note about mas
+Set up an SSH key and add it to GitHub before cloning, so yadm can switch
+the remote to SSH after bootstrap.
 
-For App Store items, this will fail if trying to use an Apple ID that has not downloaded/installed the software previously. Instead, you will need to manually purchase each package first.
-```bash
-mas purchase 497799835  # Xcode
 ```
+~/.ssh/config template:
+
+Host github.com
+    AddKeysToAgent yes
+    IdentityFile ~/.ssh/<your_key>
+
+Host *
+    AddKeysToAgent yes
+```
+
+See: [Connecting to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
+
+## Setup
 
 ### Clone and bootstrap
 
 ```bash
-yadm clone https://github.com/wllsln/mac-setup.git --bootstrap # https!
+yadm clone https://github.com/wllsln/mac-setup.git --bootstrap
 ```
 
-**NB:** Bootstraping updates the remote url to ssh, so an ssh key will have to be configured after this (see below).
+> Uses HTTPS for the initial clone. Bootstrap switches the remote to SSH
+> automatically at the end.
 
-**NB:** There might be some need to enter the sudo password.
+The bootstrap will:
+- Install Homebrew packages (`brew bundle --global`)
+- Configure iTerm2 to load prefs from `~/.iterm2/`
+- Install vim-plug and vim plugins
+- Install tmux plugin manager (TPM) and tmux plugins
+- Switch the yadm remote to SSH
 
-**NB:** Mac App Store installs will ask for a login.
+**You may be prompted for your sudo password.**
 
-## Done!
+### App Store apps (optional)
 
-----
-
-## Extra
-
-### iTerm Navigation
-
-Change Keyboard presets to enable navigating like the Terminal app:
-* Start iTerm2
-* Go to Preferencees > Profiles
-* Open the Keys tab for your profile, then select Key Mapping subtab
-* Click the Presets dropdown, and select either: Natural Text Editing or Terminal.app Compatibility
-
-### Add ssh key
-
-Configure (new or existing) [ssh key and add it to GitHub](https://help.github.com/articles/connecting-to-github-with-ssh/), then [add key to ssh-agent and `~/.ssh/config`](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#adding-your-ssh-key-to-the-ssh-agent). Then test:
-
-```
-ssh -T git@github.com
-```
-
-### Cheat sheet
+`mas` is included but App Store installs are disabled by default. To install
+manually, sign into the App Store first, then use:
 
 ```bash
-# yadm wraps git, e.g.:
+mas install <app_id>
+```
+
+An app must have been previously purchased/downloaded under your Apple ID.
+
+## Cheat sheet
+
+```bash
+# yadm wraps git:
 yadm status
 yadm add <file>
 yadm commit
 yadm push
-# etc
 
-# List files under yadm control:
+# List all files under yadm control:
 yadm list -a
 ```
 
 See: https://yadm.io/docs/common_commands
 
-### Future inspiration
-- https://engineeringfordatascience.com/posts/configure_terminal_for_data_science_with_oh_my_zsh/
-- https://safjan.com/top-popular-zsh-plugins-on-github-2023/
+## Extra
+
+### iTerm2 navigation
+
+To enable word/line navigation shortcuts:
+- Open iTerm2 → Preferences → Profiles → Keys → Key Mappings
+- Click Presets → select **Natural Text Editing**
+
+### tmux session persistence
+
+Sessions are automatically saved every 15 minutes and restored on tmux
+server start via `tmux-continuum`. To manually save: `prefix + Ctrl-s`.
+To restore: `prefix + Ctrl-r`.
