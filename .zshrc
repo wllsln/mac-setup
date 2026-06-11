@@ -1,31 +1,48 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 #!/usr/bin/env zsh
 
 #-----------------------------------------
 # ** Environment variables
 #-----------------------------------------
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # History
-export SAVEHIST=10000 # Entries to save
-export HISTSIZE=10000 # Size in Bytes
-export HISTFILE=~/.zsh_history
+HISTFILE=${ZDOTDIR:-~}/.zsh_history
+HISTSIZE=10000  # The maximum number of events to save in the internal history.
+SAVEHIST=10000  # The maximum number of events to save in the history file.1
+
+# Terminal
+export TERM=xterm-256color
+
+# Brew
+HOMEBREW_FORBIDDEN_CASKS=tor-browser
+HOMEBREW_FORBIDDEN_FORMULAE=tor-browser
 
 # PATH
-BREW_PREFIX=$(/usr/local/bin/brew --prefix)
+pupdate() { case ":${PATH:=$1}:" in *:"$1":*) ;; *) PATH="$PATH:$1" ;; esac; }  # pathupdate
 PATHS=(
     # PATHs for gnu brew binaries
-    $BREW_PREFIX/opt/coreutils/libexec/gnubin
-    $BREW_PREFIX/opt/findutils/libexec/gnubin
-    $BREW_PREFIX/opt/gnu-sed/libexec/gnubin
-    $BREW_PREFIX/opt/gnu-tar/libexec/gnubin
-    $BREW_PREFIX/opt/gnu-which/libexec/gnubin
-    $BREW_PREFIX/opt/grep/libexec/gnubin
+    $HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin
+    $HOMEBREW_PREFIX/opt/findutils/libexec/gnubin
+    $HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin
+    $HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin
+    $HOMEBREW_PREFIX/opt/gnu-which/libexec/gnubin
+    $HOMEBREW_PREFIX/opt/grep/libexec/gnubin
     # PATH for other brew binaries
-    $BREW_PREFIX/bin
-    $BREW_PREFIX/sbin
-    # PATH for pipsi
-    # https://github.com/mitsuhiko/pipsi
+    $HOMEBREW_PREFIX/bin
+    $HOMEBREW_PREFIX/sbin
+    # PATH for pipx
     $HOME/.local/bin
+    ${GOPATH}/bin
+    $HOME/.jenv/bin
 )
+
 # NB: 'j' flag: join PATHS by ':'' (see: man zshexpn)
 export PATH=${(j[:])PATHS}:$PATH 
 
@@ -34,19 +51,18 @@ export PATH=${(j[:])PATHS}:$PATH
 export GPG_TTY=$(tty)
 
 # Go
-export GOPATH="${HOME}/.go"
+export GOPATH=$HOME/go
+pupdate $GOPATH/bin
+# manual:  mkdir -p $HOME/go/{bin,src,pkg}
 
-# Pyenv
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+# mise
+eval "$(mise activate zsh)"
 
-# Google Cloud SDK (to force Python 3)
-# https://cloud.google.com/sdk/gcloud/reference/topic/startup
-# 'python3' is a shim created by Pyenv
-if type python3 > /dev/null; then
-    export CLOUDSDK_PYTHON=python3
-   export CLOUDSDK_GSUTIL_PYTHON=python3
-   export CLOUDSDK_BQ_PYTHON=python3
-fi
+#-----------------------------------------
+# ** tanium-eng rc
+#-----------------------------------------
+export PATH="/Users/willis.lin/.local/bin:$PATH"
+eval "$(tanium-eng eval zsh)"
 
 #-----------------------------------------
 # ** Zsh options
@@ -54,7 +70,6 @@ fi
 
 # http://zsh.sourceforge.net/Doc/Release/Options.html
 setopt AUTO_CD
-# setopt CORRECT_ALL
 setopt APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
@@ -62,6 +77,8 @@ setopt NOTIFY
 setopt CHECK_JOBS
 setopt INTERACTIVE_COMMENTS
 setopt ALWAYS_TO_END
+unsetopt CORRECT_ALL
+setopt CORRECT
 
 #-----------------------------------------
 # ** Completion styling
@@ -83,120 +100,29 @@ zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 zstyle ':completion:*' group-name ''
 # Enable approximate matches for completion
 # https://blog.callstack.io/supercharge-your-terminal-with-zsh-8b369d689770
-zstyle ':completion:::::' completer _expand _complete _ignored _approximate 
-
-#-----------------------------------------
-# ** Pyenv init
-#-----------------------------------------
-
-# This is plain faster than most pyenv plugins..
-eval "$(pyenv init -)"
+zstyle ':completion:::::' completer _expand _complete _ignored _approximate
 
 #-----------------------------------------
 # ** Zsh plugins
 #-----------------------------------------
 
-# 1. Antibody plugin manager init (dynamic loading)
-# https://getantibody.github.io/usage/
-source <(antibody init)
+# 1. Antidote plugin manager init
+# https://getantidote.github.io/
+source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+
 # 1.1. OMZ sets ZSH_CACHE and some of its plugins expect it
-# (set it to Antibody's home which is a cache)
-export ZSH_CACHE_DIR="$(antibody home)"
+# (set it to Antidote's home which is a cache)
+export ZSH_CACHE_DIR="$(antidote home)"
 
-# 2. Plugin: zsh-lux. Provides 'macos_is_dark', 'lux'
-antibody bundle pndurette/zsh-lux
-# antibody bundle /Users/pndurette/repos/zsh-lux kind:zsh # dev
+# 2. Load plugins from ~/.zsh_plugins.txt (includes romkatv/powerlevel10k)
+antidote load
 
-# 3. Theme: PowerLevel9k
-# 3.1. Font pre-config ('brew cask install font-hack-nerd-font')
-POWERLEVEL9K_MODE='nerdfont-complete'
-# 3.2. Color/theme pre-config
-if macos_is_dark; then
-    POWERLEVEL9K_COLOR_SCHEME="dark"
-    lux iterm dark
-else
-    POWERLEVEL9K_COLOR_SCHEME="light"
-    lux iterm light
-fi
-# 3.3. Load PowerLevel9k
-antibody bundle bhilburn/powerlevel9k
+# 3. PowerLevel10k Prompt
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ${ZDOTDIR:-~}/.p10k.zsh ]] || source ${ZDOTDIR:-~}/.p10k.zsh
 
-# 4. Load remaining plugins
-antibody bundle < ~/.zsh_plugins.txt
-
-#-----------------------------------------
-# ** Init completion
-#-----------------------------------------
-
-# (After plugins to load their completion functions in the $fpath)
-# http://zsh.sourceforge.net/Doc/Release/Functions.html
-# http://zsh.sourceforge.net/Doc/Release/Completion-System.html
-## Original
-# autoload -U compinit
-# compinit
-## From https://stackoverflow.com/questions/58283701/why-cant-zsh-execute-command-compdef
-autoload -U +X compinit && compinit
-source <(kubectl completion zsh)
-
-#-----------------------------------------
-# ** Zsh plugins (that require compinit)
-#-----------------------------------------
-
-# In awscli's 'aws_zsh_completer.sh', compinit is assumed
-antibody bundle robbyrussell/oh-my-zsh path:plugins/aws
-antibody bundle robbyrussell/oh-my-zsh path:plugins/kubectl
-
-#-----------------------------------------
-# ** Extra autocomplete & misc. sourcing
-#-----------------------------------------
-
-# azure-cli auto-complete via bash compatibility
-# https://github.com/Azure/azure-cli/issues/1722
-if [ -f "$BREW_PREFIX/etc/bash_completion.d/az" ]; then
-    source $BREW_PREFIX/etc/bash_completion.d/az
-fi
-
-# google-cloud-sdk auto-complete from brew cask
-# https://formulae.brew.sh/cask/google-cloud-sdk (caveats)
-if [ -d "$BREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/" ]; then
-    source $BREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
-    source $BREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
-fi
-
-#-----------------------------------------
-# ** PowerLevel9k theme config
-#-----------------------------------------
-
-# Prompts
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-    context
-    dir
-    dir_writable
-    vcs
-)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
-    status
-    root_indicator
-    background_jobs
-    aws
-    command_execution_time
-    time
-    # pyenv # too slow! see: pyup()/pydown() (below)
-)
-
-# Segment: context
-# (Assume current session is of login user if $HOME ends with $USER)
-if [[ $HOME =~ $USER$ ]]; then DEFAULT_USER=$USER; fi
-
-# Segment: dir_writable
-# NB: $DEFAULT_COLOR depends from $POWERLEVEL9K_COLOR_SCHEME
-POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND=$DEFAULT_COLOR
-
-# Segment: command_execution_time
-# NB: $DEFAULT_COLOR depends from $POWERLEVEL9K_COLOR_SCHEME
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=3
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='grey50'
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=$DEFAULT_COLOR
+# Enable fzf shell integration (reverse search, file completion)
+eval "$(fzf --zsh)"
 
 #-----------------------------------------
 # ** Key bindings
@@ -206,52 +132,3 @@ POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=$DEFAULT_COLOR
 # # https://github.com/zsh-users/zsh-history-substring-search#usage
 # bindkey '^[[A' history-substring-search-up      # Arrow up
 # bindkey '^[[B' history-substring-search-down    # Arrow down
-
-#-----------------------------------------
-# ** Aliases
-#-----------------------------------------
-
-# Disable autocorrect
-alias mv='nocorrect mv'
-alias cp='nocorrect cp'
-alias rm='nocorrect rm'
-alias mkdir='nocorrect mkdir'
-# Colour!
-alias ls='ls --color=auto'
-alias ll='ls --color=auto -lah'
-alias grep='grep --colour=auto'
-# Human readable
-alias df='df -h'
-alias du='du -h'
-# Apps
-alias typora='open -a typora'
-alias terraform11="${BREW_PREFIX}/opt/terraform@0.11/bin/terraform"
-# Lux
-alias lumos='lux all light'
-alias nox='lux all dark'
-# Other
-alias r='cd ~/repos'
-
-#-----------------------------------------
-# pyenv virtualenv-init & penv PowerLevel9k segment
-#-----------------------------------------
-
-# PowerLevek9k segment both slow down the shell..
-# Function to enable/disable both when required.
-function pyup() {
-    eval "$(pyenv virtualenv-init -)"
-    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS+=( pyenv )
-}
-function pydown() {
-    # 'Undo' pyenv virtualenv-init -
-    export PYENV_VIRTUALENV_INIT=0
-    unset _pyenv_virtualenv_hook
-    unset precmd_functions
-    # Remove 'pyenv' from PowerLevel9k prompt
-    # 1. Clear last element (pyenv)
-    # 2. Rebuild as array
-    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS[-1]=( '' )
-    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=( 
-        $(echo $POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS)
-    )
-}

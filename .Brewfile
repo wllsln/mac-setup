@@ -1,118 +1,148 @@
-# Based on:
-# https://www.taniarascia.com/setting-up-a-brand-new-mac-for-development/
-# https://danielmiessler.com/blog/first-10-things-new-mac/
-# https://hackercodex.com/guide/python-development-environment-on-mac-osx/
-# See homebrew-bundle:
-# https://github.com/Homebrew/homebrew-bundle
-# forked from gihub: pndurette/mac-setup
+## Based on:
+## https://www.taniarascia.com/setting-up-a-brand-new-mac-for-development/
+## https://danielmiessler.com/blog/first-10-things-new-mac/
+## https://hackercodex.com/guide/python-development-environment-on-mac-osx/
+## See homebrew-bundle:
+## https://github.com/Homebrew/homebrew-bundle
+## forked from gihub: pndurette/mac-setup
 
-# Necessary
-brew 'git'
+## Command-Line Mac App Store
 brew 'mas'
+# NB: Sign into the App Store GUI first, then 'brew install mas'
+# mas signin is broken on macOS 10.13+ — manual sign-in required
+# mas 'Microsoft Defender', id: 1526737990
 
-# Command-Line Mac App Store
-# NB: 'brew install mas && mas signin <email>'
-mas 'Amphetamine', id: 937984704
-mas 'Display Menu', id: 549083868
-mas 'Pages', id: 409201541
-mas 'Numbers', id: 409203825
-mas 'Keynote', id: 409183694
-mas "Xcode", id: 497799835
-
-# Cask macOS apps
-cask 'adobe-creative-cloud'
-# cask 'avira-antivirus'
-cask 'discord'
+## Cask macOS apps
+# cask 'adobe-creative-cloud'
+cask 'arc'
+# cask 'blackhole-2ch'
+cask 'bitwarden'
+cask 'cryptomator'
+# cask 'discord'
 cask 'dropbox'
 cask 'firefox'
+cask 'fluidvoice'
 cask 'google-chrome'
-# cask 'idrive'
-# cask 'microsoft-office'
+# cask 'inkscape'
+cask 'microsoft-edge'
+cask 'microsoft-excel'
+cask 'microsoft-outlook'
+cask 'microsoft-powerpoint'
+cask 'microsoft-word'
+cask 'notion'
+cask 'onedrive'
 # cask 'obs'
 cask 'rectangle'
 cask 'slack'
 cask 'spotify'
+cask 'synologyassistant'
+cask 'the-unarchiver'
+cask 'via'
 cask 'vlc'
 cask 'zoom'
 
-# Cask dev apps
-cask 'postman'
+## Tap dev stuff
+tap 'azure/kubelogin'
+tap 'microsoft/mssql-release'
+
+## Cask dev apps
+cask '1password'
+cask 'azure-data-studio'
+cask 'db-browser-for-sqlite'
+cask 'claude'
+cask 'claude-code'
 cask 'iterm2'
+cask 'microsoft-teams'
+cask 'postman'
+cask 'remote-desktop-manager'
+cask 'sourcetree'
 cask 'sublime-text'
 cask 'typora'
-cask 'visual-studio-code'
+cask 'utm'
+cask 'vmware-fusion'
 
-# Make macOS more linux-y
+## Fonts
+cask 'font-hack-nerd-font'
+cask 'font-anton'
+cask 'font-cormorant'
+cask 'font-epilogue'
+cask 'font-ibm-plex-mono'
+cask 'font-lora'
+cask 'font-manrope'
+cask 'font-montserrat'
+cask 'font-nunito-sans'
+cask 'font-oswald'
+cask 'font-oxygen'
+cask 'font-playfair-display'
+cask 'font-proza-libre'
+cask 'font-raleway'
+cask 'font-roboto-mono'
+cask 'font-roboto-slab'
+cask 'font-rubik'
+cask 'font-sora'
+
+## Make macOS more linux-y
+brew 'binutils'
+brew 'coreutils'
+brew 'diffutils'
 brew 'findutils'
+brew 'ffmpeg'
+brew 'gpg'
 brew 'gnu-sed'
 brew 'gnu-tar'
 brew 'gnu-which'
 brew 'gnutls'
 brew 'grep'
-brew 'coreutils'
-brew 'binutils'
-brew 'diffutils'
 brew 'gzip'
-brew 'watch'
-brew 'tmux'
-brew 'wget'
-brew 'nmap'
-brew 'gpg'
 brew 'htop'
 brew 'less'
+brew 'nmap'
+brew 'speedtest-cli'
 brew 'telnet'
+brew 'tmux'
+brew 'watch'
 brew 'wireshark'
-brew 'youtube-dl'
+brew 'wget'
+brew 'yt-dlp'
 
-# Dev
+## Dev
+brew 'antidote'
+brew 'automake'
 brew 'bash'
+brew 'bat'
+brew 'eza'
+brew 'fzf'
 brew 'git'
+brew 'git-lfs'
+brew 'go'
 brew 'jq'
 brew 'make'
-brew 'automake'
+brew 'mise'
 brew 'nano'
 brew 'openssl'
+brew 'peco'
 brew 'rpm'
 brew 'tcpdump'
 brew 'whois'
 brew 'vim'
 brew 'zlib'
 brew 'zsh'
-brew 'antibody'
-brew 'peco'
 
-# Dev/Cloud
+## Dev/Cloud
 brew 'awscli'
-cask 'google-cloud-sdk'
 brew 'azure-cli'
-brew 'terraform'
+cask 'google-cloud-sdk'
+brew 'k9s'
 
-# Dev/Containers
+## Dev/Containers
 brew 'kubernetes-cli' # i.e. kubectl
-brew 'kubernetes-helm'
+brew 'helm'
 cask 'docker'
 
-# Dev/Python
-# a) virtualenv way:
-# PIP_REQUIRE_VIRTUALENV="false" pip install virtualenv
-# PIP_REQUIRE_VIRTUALENV="false" pip3 install virtualenv
-# virtualenv -p python <name> # or:
-# virtualenv -p python3 <name>
-# b) pyenv way:
-# pyenv install <python version>
-# pyenv virtualenv <python version> <name>
-# brew 'python@2' # 2.7. <-- no longer supported
-brew 'python' # 3
-brew 'pyenv'
-brew 'pyenv-virtualenv'
-
-# Dev/Ruby
-# https://github.com/rbenv/rbenv#command-reference
-# rbenv init
-# rbenv install <version>
-# echo '<version>' > .ruby-version
-# gem install bundler
-brew 'rbenv'
-
-# Java 8 (JRE) <-- skip for now until needed
+## Java 8 (JRE) <-- skip for now until needed
 # cask 'homebrew/cask-versions/java8'
+
+## FUSE-T (for Cryptomator)
+tap 'macos-fuse-t/homebrew-cask'
+cask 'fuse-t'
+cask 'fuse-t-sshfs'

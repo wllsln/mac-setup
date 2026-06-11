@@ -21,6 +21,13 @@ brew install yadm
 
 ## Setup
 
+### Note about mas
+
+For App Store items, this will fail if trying to use an Apple ID that has not downloaded/installed the software previously. Instead, you will need to manually purchase each package first.
+```bash
+mas purchase 497799835  # Xcode
+```
+
 ### Clone and bootstrap
 
 ```bash
@@ -38,6 +45,14 @@ yadm clone https://github.com/wllsln/mac-setup.git --bootstrap # https!
 ----
 
 ## Extra
+
+### iTerm Navigation
+
+Change Keyboard presets to enable navigating like the Terminal app:
+* Start iTerm2
+* Go to Preferencees > Profiles
+* Open the Keys tab for your profile, then select Key Mapping subtab
+* Click the Presets dropdown, and select either: Natural Text Editing or Terminal.app Compatibility
 
 ### Add ssh key
 
