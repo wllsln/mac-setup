@@ -5,8 +5,6 @@ let mapleader = ","
 " Plugins {{{1
 call plug#begin('~/.vim/plugged')
 
-Plug 'vimoutliner/vimoutliner'
-
 call plug#end()
 
 " Load plugins that ship with Vim {{{1
