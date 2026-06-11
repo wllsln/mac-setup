@@ -17,6 +17,65 @@
 | [vim](https://www.vim.org) | Text editor with vim-plug plugin manager |
 | [iTerm2](https://iterm2.com) | Terminal — prefs synced via `.iterm2/` |
 
+## Highlights
+
+### antidote
+
+Replaces oh-my-zsh with a faster, composable plugin manager. Plugins are declared
+one per line in [`.zsh_plugins.txt`](.zsh_plugins.txt) and loaded automatically on
+shell start via `antidote load`.
+
+Current plugins: autosuggestions, completions, fast-syntax-highlighting, peco history
+search, OMZ plugins for aws/azure/kubectl/pip, zsh-abbr, and Powerlevel10k.
+
+To add a plugin, append the repo slug to `.zsh_plugins.txt` and restart your shell.
+
+### fzf
+
+Shell integration enabled via `eval "$(fzf --zsh)"` in `.zshrc`. Adds three
+key bindings:
+
+| Shortcut | Action |
+|---|---|
+| `Ctrl+R` | Fuzzy history search |
+| `Ctrl+T` | Fuzzy-insert a file path at the cursor |
+| `Alt+C` | Fuzzy `cd` into a directory |
+
+### zsh-abbr
+
+Like aliases, but abbreviations expand in-line when you press space — you see
+the full command before it runs. Useful for long flags or multi-part commands.
+
+Abbreviations live in [`.config/zsh-abbr/user-abbreviations`](.config/zsh-abbr/user-abbreviations).
+To add one interactively:
+
+```zsh
+abbr myabbr="the full command"
+```
+
+To add one with a trailing space (so the cursor lands after the expansion ready
+for an argument):
+
+```zsh
+abbr "myabbr"="the full command "
+```
+
+### tmux
+
+Session persistence via [TPM](https://github.com/tmux-plugins/tpm) plugins:
+
+- **tmux-continuum**: auto-saves session every 15 minutes
+- **tmux-resurrect**: manual save and restore
+
+| Shortcut | Action |
+|---|---|
+| `prefix + Ctrl-s` | Save session manually |
+| `prefix + Ctrl-r` | Restore session manually |
+
+Sessions restore automatically on `tmux` start. No action needed after a reboot.
+
+---
+
 ## Pre-setup
 
 ### Install Homebrew
@@ -80,20 +139,50 @@ mas install <app_id>
 
 An app must have been previously purchased/downloaded under your Apple ID.
 
-## Cheat sheet
+---
+
+## Workflows
+
+### Edited a dotfile — commit and push
 
 ```bash
-# yadm wraps git:
-yadm status
-yadm add <file>
-yadm commit
+yadm add ~/.zshrc
+yadm commit -m "update zshrc"
 yadm push
+```
 
-# List all files under yadm control:
-yadm list -a
+### Repo was updated — pull to your machine
+
+```bash
+yadm pull
+```
+
+If yadm reports untracked files blocking the pull, add them first:
+
+```bash
+yadm add ~/.config/some/file
+yadm pull
+```
+
+### Add a new dotfile to yadm
+
+```bash
+yadm add ~/.config/some/new-file
+yadm commit -m "track new config"
+yadm push
+```
+
+### Check state
+
+```bash
+yadm status          # uncommitted changes
+yadm diff            # diff of changes
+yadm list -a         # all files under yadm control
 ```
 
 See: https://yadm.io/docs/common_commands
+
+---
 
 ## Extra
 
@@ -102,9 +191,3 @@ See: https://yadm.io/docs/common_commands
 To enable word/line navigation shortcuts:
 - Open iTerm2 → Preferences → Profiles → Keys → Key Mappings
 - Click Presets → select **Natural Text Editing**
-
-### tmux session persistence
-
-Sessions are automatically saved every 15 minutes and restored on tmux
-server start via `tmux-continuum`. To manually save: `prefix + Ctrl-s`.
-To restore: `prefix + Ctrl-r`.
