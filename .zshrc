@@ -114,10 +114,13 @@ source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 # (set it to Antidote's home which is a cache)
 export ZSH_CACHE_DIR="$(antidote home)"
 
-# 2. Load plugins from ~/.zsh_plugins.txt (includes romkatv/powerlevel10k)
+# 2. Initialize completion system before loading plugins
+autoload -Uz compinit && compinit
+
+# 3. Load plugins from ~/.zsh_plugins.txt (includes romkatv/powerlevel10k)
 antidote load
 
-# 3. PowerLevel10k Prompt
+# 4. PowerLevel10k Prompt
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ${ZDOTDIR:-~}/.p10k.zsh ]] || source ${ZDOTDIR:-~}/.p10k.zsh
 
