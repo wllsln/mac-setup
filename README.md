@@ -7,7 +7,7 @@
 
 | Tool | Purpose |
 |---|---|
-| [Homebrew](https://brew.sh) | Package manager — see `.Brewfile` for full app list |
+| [Homebrew](https://brew.sh) | Package manager — see `.Brewfile` (workstation) and `.Brewfile.dev` (dev-only, opt-in) |
 | [antidote](https://getantidote.github.io) | Zsh plugin manager (see `.zsh_plugins.txt`) |
 | [mise](https://mise.jdx.dev) | Runtime version manager (node, kubectl, etc.) |
 | [fzf](https://github.com/junegunn/fzf) | Fuzzy finder with full shell integration |
@@ -120,7 +120,8 @@ yadm clone https://github.com/wllsln/mac-setup.git --bootstrap
 > automatically at the end.
 
 The bootstrap will:
-- Install Homebrew packages (`brew bundle --global`)
+- Install Homebrew packages from `~/.Brewfile` (`brew bundle --global`) — always runs
+- Install Homebrew packages from `~/.Brewfile.dev` — only if `$INSTALL_DEV` is set (see below)
 - Configure iTerm2 to load prefs from `~/.iterm2/`
 - Install vim-plug and vim plugins
 - Install tmux plugin manager (TPM) and tmux plugins
@@ -128,10 +129,44 @@ The bootstrap will:
 
 **You may be prompted for your sudo password.**
 
+### Dev tooling (optional)
+
+[`.Brewfile`](.Brewfile) covers a normal workstation install. Dev-only
+packages — languages/CLI tooling, cloud/container CLIs (aws, azure-cli,
+kubectl, helm, docker), network/security tools (nmap, wireshark, telnet),
+1Password, and anything needing a work license this machine may not have
+(Microsoft Office/Teams/Edge/OneDrive, `mas`) — live in
+[`.Brewfile.dev`](.Brewfile.dev) instead, and are skipped by default.
+
+To install them too, set `$INSTALL_DEV` before bootstrapping:
+
+```bash
+INSTALL_DEV=1 yadm clone https://github.com/wllsln/mac-setup.git --bootstrap
+```
+
+Or, on a machine you already bootstrapped:
+
+```bash
+INSTALL_DEV=1 ~/.config/yadm/bootstrap
+```
+
+To pick a different subset, edit `.Brewfile` / `.Brewfile.dev` directly and
+re-run `brew bundle --global` / `brew bundle --file=~/.Brewfile.dev`.
+
+**Note:** `brew bundle` resolves the entire Brewfile into a dependency graph
+before installing anything — if any single entry can't be resolved (an
+untrusted third-party tap, or a cask that's been removed upstream), the whole
+run aborts with nothing installed, rather than skipping just that entry.
+There's no flag to make it continue past a bad entry — if a bundle run fails,
+find and fix/remove the offending line in `.Brewfile`/`.Brewfile.dev` first.
+Third-party taps (e.g. FUSE-T) need `trusted: true` in the Brewfile since
+Homebrew 6 refuses to load casks from untrusted taps otherwise.
+
 ### App Store apps (optional)
 
-`mas` is included but App Store installs are disabled by default. To install
-manually, sign into the App Store first, then use:
+`mas` (in `.Brewfile.dev`, see above) is included but App Store installs are
+disabled by default. To install manually, sign into the App Store first, then
+use:
 
 ```bash
 mas install <app_id>

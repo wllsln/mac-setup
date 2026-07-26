@@ -20,8 +20,15 @@ if [ "$SYSTEM_TYPE" = "Darwin" ]; then
   fi
 
   if [ -f "$HOME/.Brewfile" ]; then
-    echo ">>> Installing brew packages.."
+    echo ">>> Installing brew packages (workstation).."
     brew bundle --global
+  fi
+
+  if [ -n "$INSTALL_DEV" ] && [ -f "$HOME/.Brewfile.dev" ]; then
+    echo ">>> \$INSTALL_DEV is set — installing dev brew packages.."
+    brew bundle --file="$HOME/.Brewfile.dev"
+  else
+    echo ">>> Skipping dev brew packages (set \$INSTALL_DEV to install them).."
   fi
 
 fi

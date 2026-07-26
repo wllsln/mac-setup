@@ -1,15 +1,7 @@
 [user]
 	name = wllsln
-	email = wllsln@live.com
+	email = wllsln@users.noreply.github.com
 [core]
 	editor = vim
-[includeIf "gitdir:~/Documents/"]
-    path = ~/Documents/.gitconfig-tanium
-[init]
-	defaultBranch = main
-[pull]
-	rebase = false
-[url "git@git.corp.tanium.com:"]
-	insteadOf = https://git.corp.tanium.com/
 [diff]
 	tool = kdiff3

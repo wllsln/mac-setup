@@ -5,12 +5,10 @@
 ## See homebrew-bundle:
 ## https://github.com/Homebrew/homebrew-bundle
 ## forked from gihub: pndurette/mac-setup
-
-## Command-Line Mac App Store
-brew 'mas'
-# NB: Sign into the App Store GUI first, then 'brew install mas'
-# mas signin is broken on macOS 10.13+ — manual sign-in required
-# mas 'Microsoft Defender', id: 1526737990
+##
+## Workstation-default packages: installed on every machine via bootstrap.
+## Dev-only packages live in ~/.Brewfile.dev and are installed only when
+## $INSTALL_DEV is set (see ~/.config/yadm/bootstrap).
 
 ## Cask macOS apps
 # cask 'adobe-creative-cloud'
@@ -24,13 +22,7 @@ cask 'firefox'
 cask 'fluidvoice'
 cask 'google-chrome'
 # cask 'inkscape'
-cask 'microsoft-edge'
-cask 'microsoft-excel'
-cask 'microsoft-outlook'
-cask 'microsoft-powerpoint'
-cask 'microsoft-word'
 cask 'notion'
-cask 'onedrive'
 # cask 'obs'
 cask 'rectangle'
 cask 'slack'
@@ -41,25 +33,9 @@ cask 'via'
 cask 'vlc'
 cask 'zoom'
 
-## Tap dev stuff
-tap 'azure/kubelogin'
-tap 'microsoft/mssql-release'
-
-## Cask dev apps
-cask '1password'
-cask 'azure-data-studio'
-cask 'db-browser-for-sqlite'
-cask 'claude'
-cask 'claude-code'
-cask 'iterm2'
-cask 'microsoft-teams'
-cask 'postman'
-cask 'remote-desktop-manager'
-cask 'sourcetree'
+## Editors (general-purpose, not dev-exclusive)
 cask 'sublime-text'
 cask 'typora'
-cask 'utm'
-cask 'vmware-fusion'
 
 ## Fonts
 cask 'font-hack-nerd-font'
@@ -81,7 +57,7 @@ cask 'font-roboto-slab'
 cask 'font-rubik'
 cask 'font-sora'
 
-## Make macOS more linux-y
+## Make macOS more linux-y (everyday shell utilities)
 brew 'binutils'
 brew 'coreutils'
 brew 'diffutils'
@@ -91,58 +67,19 @@ brew 'gpg'
 brew 'gnu-sed'
 brew 'gnu-tar'
 brew 'gnu-which'
-brew 'gnutls'
 brew 'grep'
 brew 'gzip'
 brew 'htop'
 brew 'less'
-brew 'nmap'
 brew 'speedtest-cli'
-brew 'telnet'
 brew 'tmux'
 brew 'watch'
-brew 'wireshark'
 brew 'wget'
 brew 'yt-dlp'
 
-## Dev
-brew 'antidote'
-brew 'automake'
-brew 'bash'
-brew 'bat'
-brew 'eza'
-brew 'fzf'
-brew 'git'
-brew 'git-lfs'
-brew 'go'
-brew 'jq'
-brew 'make'
-brew 'mise'
-brew 'nano'
-brew 'openssl'
-brew 'peco'
-brew 'rpm'
-brew 'tcpdump'
-brew 'whois'
-brew 'vim'
-brew 'zlib'
-brew 'zsh'
-
-## Dev/Cloud
-brew 'awscli'
-brew 'azure-cli'
-cask 'google-cloud-sdk'
-brew 'k9s'
-
-## Dev/Containers
-brew 'kubernetes-cli' # i.e. kubectl
-brew 'helm'
-cask 'docker'
-
-## Java 8 (JRE) <-- skip for now until needed
-# cask 'homebrew/cask-versions/java8'
-
 ## FUSE-T (for Cryptomator)
-tap 'macos-fuse-t/homebrew-cask'
+## trusted: true avoids "refusing to load cask ... from untrusted tap" —
+## Homebrew 6+ requires third-party taps to be explicitly trusted.
+tap 'macos-fuse-t/homebrew-cask', trusted: true
 cask 'fuse-t'
 cask 'fuse-t-sshfs'
