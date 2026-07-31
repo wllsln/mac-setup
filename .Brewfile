@@ -17,7 +17,7 @@ cask 'arc'
 cask 'bitwarden'
 cask 'cryptomator'
 # cask 'discord'
-cask 'dropbox'
+# cask 'dropbox'
 cask 'firefox'
 cask 'fluidvoice'
 cask 'google-chrome'
@@ -29,13 +29,18 @@ cask 'slack'
 cask 'spotify'
 cask 'synologyassistant'
 cask 'the-unarchiver'
-cask 'via'
+# cask 'via' — deprecated by Homebrew (fails macOS Gatekeeper check, unsigned);
+# will be fully disabled 2026-09-01. If you use a VIA-configurable keyboard,
+# install manually from https://www.caniusevia.com/ instead.
 cask 'vlc'
 cask 'zoom'
 
-## Editors (general-purpose, not dev-exclusive)
+## Editors & apps (general-purpose, not dev-exclusive)
 cask 'sublime-text'
 cask 'typora'
+cask 'claude'
+cask 'claude-code'
+cask 'iterm2'
 
 ## Fonts
 cask 'font-hack-nerd-font'
@@ -76,6 +81,13 @@ brew 'tmux'
 brew 'watch'
 brew 'wget'
 brew 'yt-dlp'
+
+## Zsh shell customization
+brew 'antidote'
+brew 'fzf'
+brew 'mise'
+brew 'vim'
+brew 'zsh'
 
 ## FUSE-T (for Cryptomator)
 ## trusted: true avoids "refusing to load cask ... from untrusted tap" —

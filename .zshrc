@@ -59,12 +59,6 @@ pupdate $GOPATH/bin
 eval "$(mise activate zsh)"
 
 #-----------------------------------------
-# ** tanium-eng rc
-#-----------------------------------------
-export PATH="/Users/willis.lin/.local/bin:$PATH"
-eval "$(tanium-eng eval zsh)"
-
-#-----------------------------------------
 # ** Zsh options
 #-----------------------------------------
 
