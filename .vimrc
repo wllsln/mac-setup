@@ -1,6 +1,6 @@
 " vim: nowrap fdm=marker
 set nocompatible
-let mapleader = ","
+let mapleader = " "
 
 " Plugins {{{1
 call plug#begin('~/.vim/plugged')
@@ -71,16 +71,46 @@ endif
 set nobackup
 set noswapfile
 
+" Line numbers {{{2
+set number
+set relativenumber
+let g:numbers_enabled = 1
+
+" Relative numbers in normal mode, absolute in insert mode
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * if g:numbers_enabled | set relativenumber | endif
+  autocmd BufLeave,FocusLost,InsertEnter   * if g:numbers_enabled | set norelativenumber | endif
+augroup END
+
+" <leader>n: turn all line numbers off (e.g. for mouse-copying), or back on
+function! ToggleNumbers()
+  if g:numbers_enabled
+    let g:numbers_enabled = 0
+    set nonumber norelativenumber
+  else
+    let g:numbers_enabled = 1
+    set number relativenumber
+  endif
+endfunction
+nnoremap <leader>n :call ToggleNumbers()<CR>
+
 " Mappings {{{1
 " Quick toggles {{{2
 nmap <silent> <leader>l :set list!<CR>
 nmap <silent> <leader>w :set wrap!<CR>
 nmap <silent> <buffer> <leader>s :set spell!<CR>
-nmap <silent> <leader>n :silent :nohlsearch<CR>
+nmap <silent> <leader>h :silent :nohlsearch<CR>
 
 " Commands to quickly set >1 option in one go {{{2
 command! -nargs=* Wrap set wrap linebreak nolist
 command! -nargs=* Maxsize set columns=1000 lines=1000
+
+" System clipboard and replace {{{2
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>p "+p
+nnoremap <leader>S :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " Window switching {{{2
 nnoremap <C-k> <C-W>k
