@@ -129,3 +129,6 @@ eval "$(fzf --zsh)"
 # # https://github.com/zsh-users/zsh-history-substring-search#usage
 # bindkey '^[[A' history-substring-search-up      # Arrow up
 # bindkey '^[[B' history-substring-search-down    # Arrow down
+
+export PATH="/Users/wlin/go/bin:$PATH"
+

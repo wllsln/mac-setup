@@ -2,37 +2,12 @@
 ## Installed only when $INSTALL_DEV is set (see ~/.config/yadm/bootstrap).
 ## Workstation-default packages live in ~/.Brewfile.
 
-## Taps
-tap 'azure/kubelogin'
-tap 'microsoft/mssql-release'
+## Agent tooling (installed elsewhere)
+# brew 'pi-coding-agent'
+# cask 'claude-code'
 
-## Cask dev apps
-cask '1password'
-cask 'azure-data-studio'
-cask 'db-browser-for-sqlite'
-cask 'postman'
-cask 'remote-desktop-manager'
-cask 'sourcetree'
-cask 'utm'
-# cask 'vmware-fusion' — removed from homebrew-cask (Broadcom moved downloads
-# behind a login/Trade Compliance form; cask was disabled 2025-06-23 and
-# auto-removed a year later). Download directly from Broadcom if needed:
-# https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware+Fusion
-
-## Command-Line Mac App Store
-brew 'mas'
-# NB: Sign into the App Store GUI first, then 'brew install mas'
-# mas signin is broken on macOS 10.13+ — manual sign-in required
-# mas 'Microsoft Defender', id: 1526737990
-
-## Microsoft / work-licensed apps (require a license this machine may not have)
-cask 'microsoft-edge'
-cask 'microsoft-excel'
-cask 'microsoft-outlook'
-cask 'microsoft-powerpoint'
-cask 'microsoft-teams'
-cask 'microsoft-word'
-cask 'onedrive'
+## Install dev apps
+cask 'bruno'
 
 ## Network/security CLI tools
 brew 'gnutls'
@@ -45,6 +20,7 @@ brew 'automake'
 brew 'bash'
 brew 'bat'
 brew 'eza'
+brwe 'gh'
 brew 'git'
 brew 'git-lfs'
 brew 'go'
@@ -58,16 +34,7 @@ brew 'tcpdump'
 brew 'whois'
 brew 'zlib'
 
-## Dev/Cloud
-brew 'awscli'
-brew 'azure-cli'
-cask 'google-cloud-sdk'
-brew 'k9s'
-
 ## Dev/Containers
 brew 'kubernetes-cli' # i.e. kubectl
 brew 'helm'
 cask 'docker'
-
-## Java 8 (JRE) <-- skip for now until needed
-# cask 'homebrew/cask-versions/java8'
