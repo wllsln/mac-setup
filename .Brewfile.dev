@@ -8,6 +8,7 @@
 
 ## Install dev apps
 cask 'bruno'
+cask 'handy'
 
 ## Network/security CLI tools
 brew 'gnutls'
