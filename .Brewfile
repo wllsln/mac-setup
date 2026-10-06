@@ -1,46 +1,27 @@
-## Based on:
-## https://www.taniarascia.com/setting-up-a-brand-new-mac-for-development/
-## https://danielmiessler.com/blog/first-10-things-new-mac/
-## https://hackercodex.com/guide/python-development-environment-on-mac-osx/
-## See homebrew-bundle:
-## https://github.com/Homebrew/homebrew-bundle
-## forked from gihub: pndurette/mac-setup
-##
-## Workstation-default packages: installed on every machine via bootstrap.
-## Dev-only packages live in ~/.Brewfile.dev and are installed only when
-## $INSTALL_DEV is set (see ~/.config/yadm/bootstrap).
+# Dev workstation version
+
+## Installed via SSO
+# cask 'google-chrome'
+# cask 'firefox'
+# cask 'zoom'
+# cask '1password'
+# cask 'claude'
+# cask 'slack'
+# cask 'microsoft-word'
+# cask 'microsoft-excel'
+# cask 'microsoft-outlook'
+# cask 'microsoft-powerpoint''
+# cask 'rectangle'
+# cask 'box-drive'
+# cask 'claude'
 
 ## Cask macOS apps
-# cask 'adobe-creative-cloud'
-cask 'arc'
-# cask 'blackhole-2ch'
-cask 'bitwarden'
-cask 'cryptomator'
-# cask 'discord'
-# cask 'dropbox'
-cask 'firefox'
-cask 'fluidvoice'
-cask 'google-chrome'
-# cask 'inkscape'
-cask 'notion'
-# cask 'obs'
-cask 'rectangle'
-cask 'slack'
 cask 'spotify'
-cask 'synologyassistant'
-cask 'the-unarchiver'
-# cask 'via' — deprecated by Homebrew (fails macOS Gatekeeper check, unsigned);
-# will be fully disabled 2026-09-01. If you use a VIA-configurable keyboard,
-# install manually from https://www.caniusevia.com/ instead.
-cask 'vlc'
-cask 'zoom'
 
 ## Editors & apps (general-purpose, not dev-exclusive)
 cask 'sublime-text'
-cask 'typora'
-cask 'claude'
-cask 'claude-code'
 cask 'iterm2'
+cask 'obsidian'
 
 ## Fonts
 cask 'font-hack-nerd-font'
@@ -76,11 +57,9 @@ brew 'grep'
 brew 'gzip'
 brew 'htop'
 brew 'less'
-brew 'speedtest-cli'
 brew 'tmux'
 brew 'watch'
 brew 'wget'
-brew 'yt-dlp'
 
 ## Zsh shell customization
 brew 'antidote'
@@ -88,10 +67,3 @@ brew 'fzf'
 brew 'mise'
 brew 'vim'
 brew 'zsh'
-
-## FUSE-T (for Cryptomator)
-## trusted: true avoids "refusing to load cask ... from untrusted tap" —
-## Homebrew 6+ requires third-party taps to be explicitly trusted.
-tap 'macos-fuse-t/homebrew-cask', trusted: true
-cask 'fuse-t'
-cask 'fuse-t-sshfs'

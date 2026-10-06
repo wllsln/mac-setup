@@ -129,3 +129,11 @@ eval "$(fzf --zsh)"
 # # https://github.com/zsh-users/zsh-history-substring-search#usage
 # bindkey '^[[A' history-substring-search-up      # Arrow up
 # bindkey '^[[B' history-substring-search-down    # Arrow down
+
+export PATH="/Users/wlin/go/bin:$PATH"
+
+# >>> dx >>>
+if command -v dx >/dev/null 2>&1 && dx env >/dev/null 2>&1; then
+  eval "$(dx env </dev/null 2>/dev/null)"
+fi
+# <<< dx <<<
