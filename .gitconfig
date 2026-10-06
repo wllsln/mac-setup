@@ -1,7 +1,0 @@
-[user]
-	name = wllsln
-	email = wllsln@users.noreply.github.com
-[core]
-	editor = vim
-[diff]
-	tool = kdiff3
