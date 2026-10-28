@@ -107,6 +107,8 @@ source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 # 1.1. OMZ sets ZSH_CACHE and some of its plugins expect it
 # (set it to Antidote's home which is a cache)
 export ZSH_CACHE_DIR="$(antidote home)"
+# OMZ creates this itself; plugins like kubectl write completions here
+mkdir -p "$ZSH_CACHE_DIR/completions"
 
 # 2. Initialize completion system before loading plugins
 autoload -Uz compinit && compinit
@@ -132,3 +134,5 @@ eval "$(fzf --zsh)"
 
 export PATH="/Users/wlin/go/bin:$PATH"
 
+# Work-specific config (not tracked here)
+[ -f ~/.config/work-env/env.zsh ] && source ~/.config/work-env/env.zsh

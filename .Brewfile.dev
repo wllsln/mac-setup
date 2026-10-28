@@ -21,7 +21,7 @@ brew 'automake'
 brew 'bash'
 brew 'bat'
 brew 'eza'
-brwe 'gh'
+brew 'gh'
 brew 'git'
 brew 'git-lfs'
 brew 'go'
@@ -38,4 +38,15 @@ brew 'zlib'
 ## Dev/Containers
 brew 'kubernetes-cli' # i.e. kubectl
 brew 'helm'
-cask 'docker'
+brew 'colima'
+
+## Dev tools
+brew 'gitleaks'
+brew 'robot-framework'
+brew 'uv'
+cask 'visual-studio-code'
+
+## Media
+brew 'gifski'
+brew 'srt'
+brew 'webp'

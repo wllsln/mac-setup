@@ -19,9 +19,12 @@
 cask 'spotify'
 
 ## Editors & apps (general-purpose, not dev-exclusive)
-cask 'sublime-text'
+cask 'hammerspoon'
 cask 'iterm2'
+cask 'logi-options+'
 cask 'obsidian'
+cask 'sublime-text'
+cask 'typora'
 
 ## Fonts
 cask 'font-hack-nerd-font'
@@ -60,6 +63,7 @@ brew 'less'
 brew 'tmux'
 brew 'watch'
 brew 'wget'
+brew 'yadm'
 
 ## Zsh shell customization
 brew 'antidote'
