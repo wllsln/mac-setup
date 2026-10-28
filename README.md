@@ -122,6 +122,7 @@ yadm clone https://github.com/wllsln/mac-setup.git --bootstrap
 The bootstrap will:
 - Install Homebrew packages from `~/.Brewfile` (`brew bundle --global`) — always runs
 - Install Homebrew packages from `~/.Brewfile.dev` — only if `$INSTALL_DEV` is set (see below)
+- Install Homebrew packages from `~/.config/work-env/Brewfile` — only if it exists (see below)
 - Configure iTerm2 to load prefs from `~/.iterm2/`
 - Install vim-plug and vim plugins
 - Install tmux plugin manager (TPM) and tmux plugins
@@ -161,6 +162,25 @@ There's no flag to make it continue past a bad entry — if a bundle run fails,
 find and fix/remove the offending line in `.Brewfile`/`.Brewfile.dev` first.
 Third-party taps (e.g. FUSE-T) need `trusted: true` in the Brewfile since
 Homebrew 6 refuses to load casks from untrusted taps otherwise.
+
+### Private config (optional)
+
+Anything that shouldn't live in this public repo (employer-specific shell
+config, work-only packages, internal hostnames) goes in `~/.config/work-env/`.
+The directory is not tracked by yadm. Its files are symlinks into a separate
+private repo, which has an `install.sh` that creates them.
+
+| File | Used by |
+|---|---|
+| `~/.config/work-env/env.zsh` | Sourced at the end of `~/.zshrc` if it exists |
+| `~/.config/work-env/Brewfile` | Run by bootstrap (`brew bundle`) if it exists |
+
+Both are optional, so a machine without the private repo just skips them. The
+name is deliberately generic: at a new job, replace the contents in the private
+repo and nothing here has to change. For another kind of private item, add a
+file under `~/.config/work-env/` and reference it from `.zshrc` or bootstrap
+with the same "if it exists" guard. Keep secrets in the macOS keychain, not in
+these files.
 
 ### App Store apps (optional)
 
